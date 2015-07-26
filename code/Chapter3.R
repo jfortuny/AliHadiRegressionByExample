@@ -12,3 +12,14 @@ summary(lmSup)
 # prediction
 predict(lmSup, interval = c("confidence"))
 predict(lmSup, interval = c("prediction"))
+
+# Reduced model
+lmSupRM = lm(Y ~ X1+X3)
+lmSupRM
+summary(lmSupRM)
+# anova will provide SS and F-test values for the predictors
+anova(lmSupRM)
+# to get the anova for the full model
+anova(update(lmSupRM, ~ 1), lmSup)
+# and for the reduced model
+anova(update(lmSupRM, ~ 1), lmSupRM)
