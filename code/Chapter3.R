@@ -8,10 +8,17 @@ pairs(SupervisorPerformanceData_p60_ch3)
 # linear model
 lmSup = lm(Y ~ X1+X2+X3+X4+X5+X6)
 lmSup
-summary(lmSup)
+summary(l)
 # prediction
 predict(lmSup, interval = c("confidence"))
 predict(lmSup, interval = c("prediction"))
+# plot it
+par(mfrow=c(2,2))
+plot(lmSup)
+par(mfrow=c(1,1))
+yHat = predict(lmSup)
+plot(yHat, Y)
+cor(yHat, Y)
 
 # Reduced model
 lmSupRM = lm(Y ~ X1+X3)
@@ -23,3 +30,4 @@ anova(lmSupRM)
 anova(update(lmSupRM, ~ 1), lmSup)
 # and for the reduced model
 anova(update(lmSupRM, ~ 1), lmSupRM)
+
