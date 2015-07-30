@@ -28,4 +28,3 @@ summary(lmNY)
 dfMinusNeversink = NewYorkRiversData_p10[-4,]
 
 lmNY2 = lm(Nitrogen ~ Agr + Forest + Rsdntial + ComIndl, data = dfMinusNeversink)
-summary(lmNY2)
