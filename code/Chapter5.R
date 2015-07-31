@@ -18,3 +18,12 @@ ggplot(data = salNarrow[salNarrow$variable=="X",], aes(x = variable, y = value))
 ggplot(data = salNarrow[salNarrow$variable=="E",], aes(x = variable, y = value)) + 
               geom_boxplot() + labs(title = "Education")
 # ggplot(data = salNarrow[salNarrow$variable=="M",], aes(x = variable, y = value)) + geom_boxplot()
+
+# Convert variables to factors
+SalarySurvey_p130$M = factor(SalarySurvey_p130$M, labels = c("Employee", "Manager"))
+SalarySurvey_p130$E = factor(SalarySurvey_p130$E, labels = c("HS", "BS", "Adv"))
+
+# Fit a linear model
+lmSup = lm(S ~ X + E + M)
+lmSup
+summary(lmSup)
